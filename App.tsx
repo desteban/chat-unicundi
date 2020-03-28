@@ -6,25 +6,13 @@ import { SvgUri } from "react-native-svg";
 import Home from "./containers/Home";
 import Grupo from "./containers/Grupo";
 import Login from "./containers/Login";
+import Header from "./components/Header";
 
 export default function App() {
   return (
     <NativeRouter>
       <View style={styles.container}>
-        <StatusBar hidden={true} />
-        <View style={styles.header}>
-          <Image source={require("./assets/menu.png")} style={styles.img} />
-          <Text style={styles.title}>ChatUnicundi</Text>
-        </View>
-        <Link to={"/"} underlayColor="#f0f4f7">
-          <Text>Home</Text>
-        </Link>
-        <Link to={"/grupo"} underlayColor="#f0f4f7">
-          <Text>Grupo</Text>
-        </Link>
-        <Link to={"/lista"} underlayColor="#f0f4f7">
-          <Text>Lista de grupos</Text>
-        </Link>
+        <Header />
         <Route exact path="/" component={Login} />
         <Route path="/grupo" component={Grupo} />
         <Route path="/lista" component={Home} />
@@ -36,8 +24,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 8,
-    backgroundColor: "#fff"
+    backgroundColor: "#F9F9F9"
   },
   title: {
     fontSize: 20
