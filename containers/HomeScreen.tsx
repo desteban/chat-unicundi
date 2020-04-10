@@ -1,29 +1,35 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import { View, Text, AsyncStorage, Button } from 'react-native';
+//import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+
+import Login from './Login';
 import Home from './Home';
 import Grupo from './Grupo';
 
-const Stack = createStackNavigator();
-const opcionesHeader: StackNavigationOptions = {
-	headerTitleAlign: 'center',
-	title: 'ChatUnicundi',
-	headerStyle: { backgroundColor: '#1F3F3E' },
-	headerTitleStyle: { fontSize: 22, color: '#FFFFFF' }
-};
+let ses: string;
+let navigationG;
+const Drawer = createDrawerNavigator();
 
-export default class HomeScreen extends React.Component {
-	constructor(props) {
-		super(props);
+const user = AsyncStorage.getItem('user', (error, result) => {
+	if (result) {
+		ses = 'Home';
+	} else {
+		ses = 'Login';
 	}
+	return JSON.parse(result);
+});
+user;
 
-	render() {
-		return (
-			<Stack.Navigator initialRouteName="Home">
-				<Stack.Screen name="Home" component={Home} options={{ headerShown: false }} />
-				<Stack.Screen name="chat" component={Grupo} options={opcionesHeader} />
-			</Stack.Navigator>
-		);
-	}
+function App({ navigation }) {
+	navigationG = navigation;
+	return (
+		<Drawer.Navigator>
+			<Drawer.Screen name="Login" component={Login} />
+			<Drawer.Screen name="HomeScreen" component={Home} options={{ title: 'Home' }} />
+			<Drawer.Screen name="Perfil" component={Grupo} />
+		</Drawer.Navigator>
+	);
 }
+
+export default App;

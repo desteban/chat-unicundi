@@ -1,23 +1,13 @@
 import * as React from 'react';
-import { View, Text, AsyncStorage, Button } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-//import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerItemList } from '@react-navigation/drawer';
+import { Dimensions, AsyncStorage } from 'react-native';
 
-import Login from './containers/Login';
-import Home from './containers/Home';
-import Grupo from './containers/Grupo';
-import Header from './components/Header';
-import HomeScreen from './containers/HomeScreen';
+import { GrupoScreen, HomeScreen, LoginScreen, PerfilScreen } from './Screens/index';
+import Sidebar from './components/SideBar';
 
 let ses: string;
-//const Stack = createStackNavigator();
-/*const opcionesHeader: StackNavigationOptions = {
-	headerTitleAlign: 'center',
-	title: 'ChatUnicundi',
-	headerStyle: { backgroundColor: '#1F3F3E' },
-	headerTitleStyle: { fontSize: 22, color: '#FFFFFF' }
-};*/
+let navigationG;
 const Drawer = createDrawerNavigator();
 
 const user = AsyncStorage.getItem('user', (error, result) => {
@@ -30,35 +20,60 @@ const user = AsyncStorage.getItem('user', (error, result) => {
 });
 user;
 
-function App() {
+function App({ navigation }) {
+	navigationG = navigation;
 	return (
-		/*<NavigationContainer>
-			{console.log(ses)}
-			<Stack.Navigator initialRouteName={ses}>
-				<Stack.Screen name="Home" component={Home} options={opcionesHeader} />
-				<Stack.Screen
-					name="Login"
-					component={Login}
-					options={{
-						headerLeft: () => <Button title="Back" onPress={() => alert('Hola')} />
-					}}
-				/>
-				<Stack.Screen name="Chat" component={Grupo} />
-			</Stack.Navigator>
-		</NavigationContainer>*/
 		<NavigationContainer>
-			<Header />
-			<Drawer.Navigator>
-				<Drawer.Screen name="Login" component={Login} />
-				<Drawer.Screen
-					name="HomeScreen"
-					component={HomeScreen}
-					options={{ title: 'Home' }}
-				/>
-				<Drawer.Screen name="Perfil" component={Grupo} />
+			<Drawer.Navigator drawerContent={Sidebar}>
+				<Drawer.Screen name="Home" component={HomeScreen} />
+				<Drawer.Screen name="Chat" component={GrupoScreen} />
+				<Drawer.Screen name="LoginScreen" component={LoginScreen} />
+				<Drawer.Screen name="PerfilScreen" component={PerfilScreen} />
 			</Drawer.Navigator>
 		</NavigationContainer>
 	);
 }
 
 export default App;
+
+/*import { View, Text, AsyncStorage, Button } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import Login from './containers/Login';
+import Grupo from './containers/Grupo';
+import HomeScreen from './containers/HomeScreen';
+
+const opcionesHeader: StackNavigationOptions = {
+	headerTitleAlign: 'center',
+	title: 'ChatUnicundi',
+	headerStyle: { backgroundColor: '#1F3F3E' },
+	headerTitleStyle: { fontSize: 22, color: '#FFFFFF' },
+	headerLeft: () => (
+		<Text
+			onPress={() => {
+				console.log('open');
+			}}
+		>
+			<Icon name="menu" size={30} color="#FFFFFF" />
+		</Text>
+	)
+};
+
+//const Drawer = createDrawerNavigator();
+const Stack = createStackNavigator();
+
+function App() {
+	return (
+		<NavigationContainer>
+			<Stack.Navigator initialRouteName="Home">
+				<Stack.Screen name="Login" component={Login} options={opcionesHeader} />
+				<Stack.Screen name="Home" component={HomeScreen} options={opcionesHeader} />
+				<Stack.Screen name="Chat" component={Grupo} />
+			</Stack.Navigator>
+		</NavigationContainer>
+	);
+}
+
+export default App;*/
