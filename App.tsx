@@ -6,6 +6,8 @@ import { Dimensions, AsyncStorage } from 'react-native';
 import { GrupoScreen, HomeScreen, LoginScreen, PerfilScreen } from './Screens/index';
 import Sidebar from './components/SideBar';
 
+import Home from './containers/Home';
+
 let ses: string;
 let navigationG;
 const Drawer = createDrawerNavigator();
@@ -24,8 +26,8 @@ function App({ navigation }) {
 	navigationG = navigation;
 	return (
 		<NavigationContainer>
-			<Drawer.Navigator drawerContent={Sidebar}>
-				<Drawer.Screen name="Home" component={HomeScreen} />
+			<Drawer.Navigator drawerContent={(props) => <Sidebar {...props} />}>
+				<Drawer.Screen name="Home" component={Home} />
 				<Drawer.Screen name="Chat" component={GrupoScreen} />
 				<Drawer.Screen name="LoginScreen" component={LoginScreen} />
 				<Drawer.Screen name="PerfilScreen" component={PerfilScreen} />

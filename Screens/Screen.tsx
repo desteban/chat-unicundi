@@ -6,50 +6,36 @@ import Constants from 'expo-constants';
 interface Iprops {
 	navigation;
 	nombre?: string;
+	contenido?;
 }
 
 export default class Screen extends React.Component<Iprops, null> {
 	render() {
 		return (
 			<View>
-				<SafeAreaView style={estilos.container}>
-					<StatusBar backgroundColor="#1F3F3E" />
-					<TouchableOpacity
-						style={{ alignItems: 'flex-start', margin: 10 }}
-						onPress={this.props.navigation.openDrawer}
-					>
-						<Icon name="menu" size={30} color="#FFFFFF" />
-					</TouchableOpacity>
-					<View
-						style={{
-							flex: 1,
-							alignItems: 'center',
-							justifyContent: 'center'
-						}}
-					>
-						<Text style={estilos.text}>
-							{this.props.nombre ? this.props.nombre : 'ChatUnicundi'}
-						</Text>
-					</View>
-				</SafeAreaView>
+				<View style={estilos.header}>
+					<SafeAreaView style={{ flex: 1 }}>
+						<StatusBar backgroundColor="#1F3F3E" />
+						<View style={{ flex: 1 }}>
+							<Text style={estilos.text}>
+								{this.props.nombre ? this.props.nombre : 'ChatUnicundi'}
+							</Text>
+						</View>
+
+						<View style={{ position: 'absolute' }}>
+							<TouchableOpacity
+								style={{ alignItems: 'flex-start', margin: 10 }}
+								onPress={this.props.navigation.openDrawer}
+							>
+								<Icon name="menu" size={30} color="#FFFFFF" />
+							</TouchableOpacity>
+						</View>
+					</SafeAreaView>
+				</View>
 			</View>
 		);
 	}
 }
-
-/*
-<View
-						style={{
-							flex: 1,
-							alignItems: 'center',
-							justifyContent: 'center'
-						}}
-					>
-						<Text style={estilos.text}>
-							{this.props.nombre ? this.props.nombre : 'ChatUnicundi'}
-						</Text>
-					</View>
-*/
 
 const estilos = StyleSheet.create({
 	container: {
@@ -59,7 +45,10 @@ const estilos = StyleSheet.create({
 	text: {
 		color: '#FFFFFF',
 		fontSize: 20,
-		fontWeight: '500'
+		height: 50,
+		fontWeight: '500',
+		textAlign: 'center',
+		textAlignVertical: 'center'
 	},
 	header: {
 		backgroundColor: '#1F3F3E',
