@@ -7,6 +7,7 @@ import { GrupoScreen, HomeScreen, LoginScreen, PerfilScreen } from './Screens/in
 import Sidebar from './components/SideBar';
 
 import Home from './containers/Home';
+import Grupo from './containers/Grupo';
 
 let ses: string;
 let navigationG;
@@ -28,7 +29,7 @@ function App({ navigation }) {
 		<NavigationContainer>
 			<Drawer.Navigator drawerContent={(props) => <Sidebar {...props} />}>
 				<Drawer.Screen name="Home" component={Home} />
-				<Drawer.Screen name="Chat" component={GrupoScreen} />
+				<Drawer.Screen name="Chat" component={Grupo} />
 				<Drawer.Screen name="LoginScreen" component={LoginScreen} />
 				<Drawer.Screen name="PerfilScreen" component={PerfilScreen} />
 			</Drawer.Navigator>

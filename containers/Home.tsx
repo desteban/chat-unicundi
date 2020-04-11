@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Screen from '../Screens/Screen';
 
 interface Iprops {
@@ -13,10 +13,17 @@ export default class Home extends React.Component<Iprops, null> {
 				<Screen navigation={this.props.navigation} />
 
 				<View style={{ marginHorizontal: 5, marginVertical: 5 }}>
-					<View style={estilos.item}>
+					<TouchableOpacity
+						style={estilos.item}
+						onPress={() =>
+							this.props.navigation.navigate('Chat', {
+								grupo: 'Investigacion I',
+								codigo: '12354'
+							})
+						}
+					>
 						<Text style={estilos.materia}>Nombre Grupo</Text>
-						<Text style={estilos.profesor}>Profesor</Text>
-					</View>
+					</TouchableOpacity>
 				</View>
 			</View>
 		);
@@ -32,7 +39,7 @@ const estilos = StyleSheet.create({
 		borderRadius: 20,
 		borderColor: '#000000',
 		borderWidth: 1,
-		padding: 10
+		padding: 8
 	},
 	profesor: {
 		fontSize: 15,
