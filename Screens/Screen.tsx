@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import Constants from 'expo-constants';
 
 interface Iprops {
-	navigation;
+	navigation?;
 	nombre?: string;
 	contenido?;
 }
@@ -25,7 +25,9 @@ export default class Screen extends React.Component<Iprops, null> {
 						<View style={{ position: 'absolute' }}>
 							<TouchableOpacity
 								style={{ alignItems: 'flex-start', margin: 10 }}
-								onPress={this.props.navigation.openDrawer}
+								onPress={
+									this.props.navigation ? this.props.navigation.openDrawer : null
+								}
 							>
 								<Icon name="menu" size={30} color="#FFFFFF" />
 							</TouchableOpacity>

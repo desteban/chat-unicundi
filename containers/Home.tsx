@@ -10,8 +10,6 @@ export default class Home extends React.Component<Iprops, null> {
 	render() {
 		return (
 			<View style={estilos.container}>
-				<Screen navigation={this.props.navigation} />
-
 				<View style={{ marginHorizontal: 5, marginVertical: 5 }}>
 					<TouchableOpacity
 						style={estilos.item}

@@ -19,7 +19,7 @@ export default class Login extends React.Component<null, IState> {
 
 		return (
 			<View style={estilos.container}>
-				<TextInput placeholder="Usuario(Aulas virtuales)" style={estilos.inputs} />
+				<TextInput placeholder="Codigo" style={estilos.inputs} />
 				<TextInput
 					placeholder="Contraseña"
 					textContentType="password"
