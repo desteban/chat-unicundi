@@ -55,6 +55,7 @@ export function MyTabBar({ state, descriptors, navigation }) {
 
 					return (
 						<TouchableOpacity
+							key={route.name}
 							accessibilityRole="button"
 							accessibilityStates={isFocused ? ['selected'] : []}
 							accessibilityLabel={options.tabBarAccessibilityLabel}
@@ -87,8 +88,9 @@ const estilos = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-		height: 50,
-		backgroundColor: '#1F3F3E'
+		height: 45,
+		backgroundColor: '#1F3F3E',
+		padding: 2
 	},
 	label: {
 		flexDirection: 'column',

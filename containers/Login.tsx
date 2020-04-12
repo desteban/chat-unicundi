@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Button, StyleSheet, TextInput } from 'react-native';
+import { View, Button, StyleSheet, TextInput, Image, ScrollView } from 'react-native';
 import Header from '../components/Header';
 
 interface IState {
@@ -19,11 +19,26 @@ export default class Login extends React.Component<null, IState> {
 
 		return (
 			<View style={estilos.container}>
+				<View
+					style={{
+						marginVertical: 15,
+						alignItems: 'center',
+						justifyContent: 'center'
+					}}
+				>
+					<Image
+						style={{ height: 150 }}
+						resizeMode="contain"
+						source={require('../assets/escudo.png')}
+					/>
+				</View>
+
 				<TextInput placeholder="Codigo" style={estilos.inputs} />
 				<TextInput
 					placeholder="Contraseña"
 					textContentType="password"
 					style={estilos.inputs}
+					secureTextEntry={true}
 				/>
 				<Button title="Ingresar" onPress={toHome} />
 			</View>

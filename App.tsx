@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { View, AsyncStorage } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { MyTabBar } from './components/TabBar';
 
 import Home from './containers/Home';
@@ -9,7 +9,7 @@ import Grupo from './containers/Grupo';
 import Login from './containers/Login';
 import Header from './components/Header';
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialTopTabNavigator();
 
 let ses: string;
 let navigationG;
@@ -29,14 +29,10 @@ function App({ navigation }) {
 	return (
 		<NavigationContainer>
 			<Header />
-			<Tab.Navigator tabBar={(props) => <MyTabBar {...props} />}>
+			<Tab.Navigator swipeEnabled={true} tabBar={(props) => <MyTabBar {...props} />}>
 				<Tab.Screen name="Home" component={Home} />
 				<Tab.Screen name="Settings" component={Login} />
-				<Tab.Screen
-					name="Chat"
-					component={Grupo}
-					options={({ navigation }) => ({ tabBarLabel: 'Que pasa' })}
-				/>
+				<Tab.Screen name="Chat" component={Grupo} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);

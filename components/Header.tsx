@@ -28,8 +28,15 @@ export default class Screen extends React.Component<Iprops, null> {
 								{this.props.nombre ? this.props.nombre : 'ChatUnicundi'}
 							</Text>
 						</View>
+					</SafeAreaView>
+				</View>
+			</View>
+		);
+	}
+}
 
-						<View style={{ position: 'absolute' }}>
+/*
+<View style={{ position: 'absolute' }}>
 							<TouchableOpacity
 								style={{ alignItems: 'flex-start', margin: 10 }}
 								onPress={
@@ -39,12 +46,7 @@ export default class Screen extends React.Component<Iprops, null> {
 								<Icon name="menu" size={30} color="#FFFFFF" />
 							</TouchableOpacity>
 						</View>
-					</SafeAreaView>
-				</View>
-			</View>
-		);
-	}
-}
+*/
 
 const estilos = StyleSheet.create({
 	container: {

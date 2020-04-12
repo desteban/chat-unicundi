@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import Screen from '../Screens/Screen';
 
 interface Iprops {
@@ -20,6 +21,7 @@ export default class Home extends React.Component<Iprops, null> {
 							})
 						}
 					>
+						<Icon name="school" size={30} />
 						<Text style={estilos.materia}>Nombre Grupo</Text>
 					</TouchableOpacity>
 				</View>
@@ -37,7 +39,9 @@ const estilos = StyleSheet.create({
 		borderRadius: 20,
 		borderColor: '#000000',
 		borderWidth: 1,
-		padding: 8
+		paddingHorizontal: 10,
+		paddingVertical: 5,
+		flexDirection: 'row'
 	},
 	profesor: {
 		fontSize: 15,
@@ -46,6 +50,7 @@ const estilos = StyleSheet.create({
 	},
 	materia: {
 		fontSize: 23,
-		textAlign: 'center'
+		textAlign: 'center',
+		marginHorizontal: 10
 	}
 });

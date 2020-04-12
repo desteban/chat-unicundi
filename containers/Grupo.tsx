@@ -15,7 +15,6 @@ export default class Grupo extends React.Component<Iprops, null> {
 	render() {
 		return (
 			<View style={estilos.container}>
-				<Screen nombre={this.props.route.params.grupo} navigation={this.props.navigation} />
 				<View style={{ paddingVertical: 8, paddingHorizontal: 5, flex: 1 }}>
 					<View style={estilos.contenido}>
 						<Text>Message</Text>
