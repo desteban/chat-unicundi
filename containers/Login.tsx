@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Button, StyleSheet, TextInput, Image, ScrollView } from 'react-native';
-import Header from '../components/Header';
+import Boton from '../components/Boton';
 
 interface IState {
 	navigation;
@@ -33,35 +33,51 @@ export default class Login extends React.Component<null, IState> {
 					/>
 				</View>
 
-				<TextInput placeholder="Codigo" style={estilos.inputs} />
+				<TextInput placeholder="Codigo" style={estilos.inputs} keyboardType="numeric" />
 				<TextInput
 					placeholder="Contraseña"
 					textContentType="password"
 					style={estilos.inputs}
 					secureTextEntry={true}
 				/>
-				<Button title="Ingresar" onPress={toHome} />
+
+				<View
+					style={{
+						flexDirection: 'row',
+						justifyContent: 'space-around',
+						marginVertical: 15
+					}}
+				>
+					<Boton Text="Ingresar" backgroundColor="#1F3F3E" Color="white" />
+					<Boton
+						Text="¿Olvidaste tu contraseña?"
+						borderWidth={1}
+						borderColor="gray"
+						Color="gray"
+					/>
+				</View>
 			</View>
 		);
 	}
 }
 
+/*
+borderColor="#e3e3e3"
+						Color="#cfcfcf"
+*/
+
 const estilos = StyleSheet.create({
-	btn: {
-		backgroundColor: '#26FF67'
-	},
 	container: {
 		flex: 1,
 		flexDirection: 'column',
 		justifyContent: 'center',
 		backgroundColor: '#F9F9F9',
-		padding: 5
+		paddingHorizontal: 10,
+		paddingVertical: 5
 	},
 	inputs: {
-		borderRadius: 30,
 		borderColor: '#000000',
-		borderWidth: 2,
-		textAlign: 'center',
+		borderBottomWidth: 2,
 		height: 30,
 		fontSize: 20,
 		marginBottom: 15

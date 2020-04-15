@@ -8,13 +8,13 @@ const colorNormal = 'gray';
 function icono(route, focused) {
 	let iconName;
 
-	if (route.name === 'Home') {
-		iconName = focused ? 'home' : 'home';
+	if (route.name === 'Grupos') {
+		iconName = focused ? 'group' : 'home';
 	} else if (route.name === 'Settings') {
-		iconName = focused ? 'https' : 'https';
+		iconName = focused ? 'https' : 'group';
 	}
 
-	return <Icon name={iconName} size={20} color={focused ? 'white' : 'gray'} />;
+	return <Icon name={iconName} size={25} color={focused ? 'white' : 'gray'} />;
 }
 
 const onPress = (navigation, route, isFocused) => {
@@ -88,7 +88,7 @@ const estilos = StyleSheet.create({
 		flexDirection: 'row',
 		alignItems: 'center',
 		justifyContent: 'center',
-		height: 45,
+		height: 50,
 		backgroundColor: '#1F3F3E',
 		padding: 2
 	},

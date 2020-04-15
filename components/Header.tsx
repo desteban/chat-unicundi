@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-	View,
-	Text,
-	StyleSheet,
-	Image,
-	StatusBar,
-	SafeAreaView,
-	TouchableOpacity
-} from 'react-native';
+import { View, Text, StyleSheet, SafeAreaView, TouchableOpacity, StatusBar } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 interface Iprops {
@@ -20,13 +12,23 @@ export default class Screen extends React.Component<Iprops, null> {
 	render() {
 		return (
 			<View>
+				<StatusBar backgroundColor="#1F3F3E" />
 				<View style={estilos.header}>
-					<SafeAreaView style={{ flex: 1 }}>
-						<StatusBar backgroundColor="#1F3F3E" />
+					<SafeAreaView
+						style={{
+							flex: 1,
+							flexDirection: 'row',
+							paddingVertical: 10,
+							paddingHorizontal: 10
+						}}
+					>
 						<View style={{ flex: 1 }}>
-							<Text style={estilos.text}>
-								{this.props.nombre ? this.props.nombre : 'ChatUnicundi'}
-							</Text>
+							<Text style={estilos.nombreUsuario}>Nombre del Usuario</Text>
+							<Text style={estilos.codigoUsuario}>Codigo</Text>
+						</View>
+
+						<View>
+							<Icon name="face" size={35} color="white" />
 						</View>
 					</SafeAreaView>
 				</View>
@@ -34,19 +36,6 @@ export default class Screen extends React.Component<Iprops, null> {
 		);
 	}
 }
-
-/*
-<View style={{ position: 'absolute' }}>
-							<TouchableOpacity
-								style={{ alignItems: 'flex-start', margin: 10 }}
-								onPress={
-									this.props.navigation ? this.props.navigation.openDrawer : null
-								}
-							>
-								<Icon name="menu" size={30} color="#FFFFFF" />
-							</TouchableOpacity>
-						</View>
-*/
 
 const estilos = StyleSheet.create({
 	container: {
@@ -64,5 +53,13 @@ const estilos = StyleSheet.create({
 	header: {
 		backgroundColor: '#1F3F3E',
 		height: 50
+	},
+	nombreUsuario: {
+		color: 'white',
+		fontSize: 15
+	},
+	codigoUsuario: {
+		color: 'white',
+		fontSize: 12
 	}
 });

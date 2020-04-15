@@ -11,7 +11,7 @@ export default class Home extends React.Component<Iprops, null> {
 	render() {
 		return (
 			<View style={estilos.container}>
-				<View style={{ marginHorizontal: 5, marginVertical: 5 }}>
+				<View style={{ marginHorizontal: 10, marginVertical: 8 }}>
 					<TouchableOpacity
 						style={estilos.item}
 						onPress={() =>
@@ -22,7 +22,7 @@ export default class Home extends React.Component<Iprops, null> {
 						}
 					>
 						<Icon name="school" size={30} />
-						<Text style={estilos.materia}>Nombre Grupo</Text>
+						<Text style={estilos.materia}>Nombre del Grupo</Text>
 					</TouchableOpacity>
 				</View>
 			</View>
@@ -36,9 +36,8 @@ const estilos = StyleSheet.create({
 		backgroundColor: '#F9F9F9'
 	},
 	item: {
-		borderRadius: 20,
-		borderColor: '#000000',
-		borderWidth: 1,
+		borderColor: '#c7c7c7',
+		borderBottomWidth: 2,
 		paddingHorizontal: 10,
 		paddingVertical: 5,
 		flexDirection: 'row'
@@ -51,6 +50,6 @@ const estilos = StyleSheet.create({
 	materia: {
 		fontSize: 23,
 		textAlign: 'center',
-		marginHorizontal: 10
+		marginHorizontal: 20
 	}
 });

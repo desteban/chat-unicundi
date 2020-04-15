@@ -30,9 +30,9 @@ function App({ navigation }) {
 		<NavigationContainer>
 			<Header />
 			<Tab.Navigator swipeEnabled={true} tabBar={(props) => <MyTabBar {...props} />}>
-				<Tab.Screen name="Home" component={Home} />
-				<Tab.Screen name="Settings" component={Login} />
 				<Tab.Screen name="Chat" component={Grupo} />
+				<Tab.Screen name="Grupos" component={Home} />
+				<Tab.Screen name="Settings" component={Login} />
 			</Tab.Navigator>
 		</NavigationContainer>
 	);
