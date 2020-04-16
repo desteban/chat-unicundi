@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { View, AsyncStorage } from 'react-native';
+import { AsyncStorage } from 'react-native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import Chat from './containers/Grupo';
 
 import Login from './containers/Login';
 import index from './Screens/index';
@@ -26,6 +27,7 @@ function App({ navigation }) {
 			<Stack.Navigator>
 				<Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
 				<Stack.Screen name="principal" component={index} options={{ headerShown: false }} />
+				<Stack.Screen name="Chat" component={Chat} options={{ headerShown: false }} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

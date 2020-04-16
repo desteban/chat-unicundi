@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Image, AsyncStorage } from 'react-native';
+import { View, StyleSheet, TextInput, Image, AsyncStorage, BackHandler } from 'react-native';
 import Boton from '../components/Boton';
 import Header from '../components/HeaderLogin';
 
@@ -22,7 +22,9 @@ function Usuario() {
 export default class Login extends React.Component<Iprops, IState> {
 	constructor(props) {
 		super(props);
-		this.state = { navigation: this.props.navigation };
+		this.state = {
+			navigation: this.props.navigation
+		};
 	}
 
 	render() {
