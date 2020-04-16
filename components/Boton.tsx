@@ -14,7 +14,7 @@ interface Iprops {
 export default function Boton(props: Iprops) {
 	return (
 		<TouchableOpacity
-			onPress={() => props.onPress}
+			onPress={props.onPress}
 			style={{
 				borderRadius: 50,
 				borderColor: props.borderColor ? props.borderColor : 'white',

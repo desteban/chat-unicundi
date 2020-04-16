@@ -2,14 +2,16 @@ import React from 'react';
 import { AsyncStorage } from 'react-native';
 
 async function getUser() {
-	try {
-		let user = await AsyncStorage.getItem('user');
-		return JSON.parse(user);
-	} catch (error) {
-		alert(`Algo salio mal
-        error 0l-0`);
-	}
+	AsyncStorage.getItem('user', (error, result) => {
+		return result;
+	});
 }
+
+/*unction Usuario() {
+	AsyncStorage.getItem('user', (error, result) => {
+		console.log(result);
+	});
+}*/
 
 async function saveUser(usuario) {
 	try {

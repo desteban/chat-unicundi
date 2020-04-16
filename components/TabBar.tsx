@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import Header from './Header';
 
 const colorFocus = 'white';
 const colorNormal = 'gray';
@@ -38,47 +39,50 @@ const onLongPress = (navigation, route) => {
 
 export function MyTabBar({ state, descriptors, navigation }) {
 	return (
-		<View style={estilos.bar}>
-			{state.routes.map((route, index) => {
-				if (route.name != 'Chat') {
-					const { options } = descriptors[route.key];
+		<View>
+			<Header />
+			<View style={estilos.bar}>
+				{state.routes.map((route, index) => {
+					if (route.name != 'Chat') {
+						const { options } = descriptors[route.key];
 
-					//definir texto del label
-					const label =
-						options.tabBarLabel !== undefined
-							? options.tabBarLabel
-							: options.title !== undefined
-							? options.title
-							: route.name;
+						//definir texto del label
+						const label =
+							options.tabBarLabel !== undefined
+								? options.tabBarLabel
+								: options.title !== undefined
+								? options.title
+								: route.name;
 
-					const isFocused = state.index === index;
+						const isFocused = state.index === index;
 
-					return (
-						<TouchableOpacity
-							key={route.name}
-							accessibilityRole="button"
-							accessibilityStates={isFocused ? ['selected'] : []}
-							accessibilityLabel={options.tabBarAccessibilityLabel}
-							testID={options.tabBarTestID}
-							onPress={() => onPress(navigation, route, isFocused)}
-							onLongPress={() => onLongPress(navigation, route)}
-							style={{ flex: 1 }}
-						>
-							<View style={estilos.label}>
-								{icono(route, isFocused)}
-								<Text
-									style={{
-										color: isFocused ? colorFocus : colorNormal,
-										textAlign: 'center'
-									}}
-								>
-									{label}
-								</Text>
-							</View>
-						</TouchableOpacity>
-					);
-				}
-			})}
+						return (
+							<TouchableOpacity
+								key={route.name}
+								accessibilityRole="button"
+								accessibilityStates={isFocused ? ['selected'] : []}
+								accessibilityLabel={options.tabBarAccessibilityLabel}
+								testID={options.tabBarTestID}
+								onPress={() => onPress(navigation, route, isFocused)}
+								onLongPress={() => onLongPress(navigation, route)}
+								style={{ flex: 1 }}
+							>
+								<View style={estilos.label}>
+									{icono(route, isFocused)}
+									<Text
+										style={{
+											color: isFocused ? colorFocus : colorNormal,
+											textAlign: 'center'
+										}}
+									>
+										{label}
+									</Text>
+								</View>
+							</TouchableOpacity>
+						);
+					}
+				})}
+			</View>
 		</View>
 	);
 }

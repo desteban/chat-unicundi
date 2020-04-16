@@ -1,18 +1,14 @@
 import * as React from 'react';
 import { View, AsyncStorage } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { MyTabBar } from './components/TabBar';
+import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import Home from './containers/Home';
-import Grupo from './containers/Grupo';
 import Login from './containers/Login';
-import Header from './components/Header';
+import index from './Screens/index';
 
-const Tab = createMaterialTopTabNavigator();
+const Stack = createStackNavigator();
 
 let ses: string;
-let navigationG;
 
 const user = AsyncStorage.getItem('user', (error, result) => {
 	if (result) {
@@ -25,15 +21,12 @@ const user = AsyncStorage.getItem('user', (error, result) => {
 user;
 
 function App({ navigation }) {
-	navigationG = navigation;
 	return (
 		<NavigationContainer>
-			<Header />
-			<Tab.Navigator swipeEnabled={true} tabBar={(props) => <MyTabBar {...props} />}>
-				<Tab.Screen name="Chat" component={Grupo} />
-				<Tab.Screen name="Grupos" component={Home} />
-				<Tab.Screen name="Settings" component={Login} />
-			</Tab.Navigator>
+			<Stack.Navigator>
+				<Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
+				<Stack.Screen name="principal" component={index} options={{ headerShown: false }} />
+			</Stack.Navigator>
 		</NavigationContainer>
 	);
 }

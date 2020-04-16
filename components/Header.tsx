@@ -52,7 +52,7 @@ const estilos = StyleSheet.create({
 	},
 	header: {
 		backgroundColor: '#1F3F3E',
-		height: 50
+		height: 55
 	},
 	nombreUsuario: {
 		color: 'white',
