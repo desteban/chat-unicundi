@@ -3,9 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { MyTabBar } from '../components/TabBar';
 
 import Home from '../containers/Home';
-import Grupo from '../containers/Grupo';
 import Login from '../containers/Login';
-import Header from '../components/Header';
 
 const Tab = createMaterialTopTabNavigator();
 

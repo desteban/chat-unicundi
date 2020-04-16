@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AsyncStorage } from 'react-native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Chat from './containers/Grupo';
 

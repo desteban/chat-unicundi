@@ -9,6 +9,7 @@ interface IState {
 
 interface Iprops {
 	navigation;
+	dispatch;
 }
 
 let user;
