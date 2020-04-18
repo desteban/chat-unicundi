@@ -23,7 +23,9 @@ export default function Mensajes(props: Imensaje) {
 		>
 			<View
 				style={
-					props.persona ? estilos.mensaje : [estilos.mensaje, { alignItems: 'flex-end' }]
+					props.persona
+						? [estilos.mensaje, { backgroundColor: 'white' }]
+						: [estilos.mensaje, { alignItems: 'flex-end', backgroundColor: '#dbf6c5' }]
 				}
 			>
 				<Text style={estilos.nombre}> {props.persona ? props.persona : 'Tu'} </Text>
@@ -41,17 +43,16 @@ export default function Mensajes(props: Imensaje) {
 const estilos = StyleSheet.create({
 	mensaje: {
 		maxWidth: '80%',
-		borderWidth: 1,
 		borderRadius: 15,
 		padding: 5,
 		alignSelf: 'flex-start',
 		marginVertical: 5
 	},
 	nombre: {
-		fontSize: 12
+		fontSize: 11
 	},
 	fecha: {
-		fontSize: 11,
+		fontSize: 10,
 		paddingHorizontal: 5
 	},
 	contenido: {

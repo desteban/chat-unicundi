@@ -22,16 +22,18 @@ export default class Grupo extends React.Component<Iprops, null> {
 					titulo={this.props.route.params.grupo}
 					navigation={this.props.navigation.goBack}
 				/>
-				<View style={estilos.container}>
-					<View style={[estilos.container, estilos.contenido]}>
-						<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
-						<Mensaje mensaje="Hola" fecha="Fecha" />
-						<Mensaje
-							persona="El primo"
-							mensaje="Dejen Dormir jajajajaj"
-							fecha="Fecha"
-						/>
-					</View>
+				<View style={[estilos.container, { backgroundColor: '#e5ddd5' }]}>
+					<ImageBackground source={null} style={estilos.image}>
+						<View style={[estilos.container, estilos.contenido]}>
+							<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
+							<Mensaje mensaje="Hola" fecha="Fecha" />
+							<Mensaje
+								persona="El primo"
+								mensaje="Dejen Dormir jajajajaj"
+								fecha="Fecha"
+							/>
+						</View>
+					</ImageBackground>
 					<View style={estilos.inputContainer}>
 						<TouchableOpacity
 							style={{
@@ -91,5 +93,13 @@ const estilos = StyleSheet.create({
 		borderColor: '#000000',
 		backgroundColor: '#1F3F3E',
 		paddingLeft: 5
+	},
+	image: {
+		flex: 1,
+		resizeMode: 'cover',
+		justifyContent: 'center'
 	}
 });
+
+//#05DDD5
+//#1F3F3E
