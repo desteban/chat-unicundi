@@ -2,6 +2,7 @@ import * as React from 'react';
 import { View, Text, StyleSheet, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Header from '../components/HeaderLogin';
+import Mensaje from '../components/Mensajes';
 
 interface Iprops {
 	route;
@@ -22,10 +23,14 @@ export default class Grupo extends React.Component<Iprops, null> {
 					navigation={this.props.navigation.goBack}
 				/>
 				<View style={estilos.container}>
-					<View style={{ paddingVertical: 8, paddingHorizontal: 5, flex: 1 }}>
-						<View style={estilos.contenido}>
-							<Text>Message</Text>
-						</View>
+					<View style={[estilos.container, estilos.contenido]}>
+						<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
+						<Mensaje mensaje="Hola" fecha="Fecha" />
+						<Mensaje
+							persona="El primo"
+							mensaje="Dejen Dormir jajajajaj"
+							fecha="Fecha"
+						/>
 					</View>
 					<View style={estilos.inputContainer}>
 						<TouchableOpacity
@@ -64,7 +69,8 @@ const estilos = StyleSheet.create({
 		flex: 1
 	},
 	contenido: {
-		flex: 8
+		paddingHorizontal: 10,
+		marginVertical: 10
 	},
 	inputContainer: {
 		height: 45,
