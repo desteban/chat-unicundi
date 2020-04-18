@@ -21,7 +21,7 @@ export default class Home extends React.Component<Iprops, null> {
 						}
 					>
 						<Icon name="school" size={30} />
-						<Text style={estilos.materia}>Nombre del Grupo</Text>
+						<Text style={estilos.materia}>Investigacion I</Text>
 					</TouchableOpacity>
 				</View>
 			</View>

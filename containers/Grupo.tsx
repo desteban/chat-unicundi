@@ -16,7 +16,11 @@ export default class Grupo extends React.Component<Iprops, null> {
 	render() {
 		return (
 			<View style={{ flex: 1 }}>
-				<Header />
+				<Header
+					back={true}
+					titulo={this.props.route.params.grupo}
+					navigation={this.props.navigation.goBack}
+				/>
 				<View style={estilos.container}>
 					<View style={{ paddingVertical: 8, paddingHorizontal: 5, flex: 1 }}>
 						<View style={estilos.contenido}>

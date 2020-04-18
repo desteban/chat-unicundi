@@ -94,7 +94,8 @@ const estilos = StyleSheet.create({
 		justifyContent: 'center',
 		height: 50,
 		backgroundColor: '#1F3F3E',
-		padding: 2
+		padding: 2,
+		marginHorizontal: 0
 	},
 	label: {
 		flexDirection: 'column',
