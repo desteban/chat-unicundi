@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { View, Text, StyleSheet, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
+import Textarea from 'react-native-textarea';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Header from '../components/HeaderLogin';
 import Mensaje from '../components/Mensajes';
@@ -9,9 +10,15 @@ interface Iprops {
 	navigation;
 }
 
-export default class Grupo extends React.Component<Iprops, null> {
+interface Istate {
+	height?: number;
+	text?: string;
+}
+
+export default class Grupo extends React.Component<Iprops, Istate> {
 	constructor(props) {
 		super(props);
+		this.state = { height: 200, text: '' };
 	}
 
 	render() {
@@ -34,27 +41,35 @@ export default class Grupo extends React.Component<Iprops, null> {
 							/>
 						</View>
 					</ImageBackground>
-					<View style={estilos.inputContainer}>
+					<View
+						style={[
+							estilos.inputContainer,
+							{ height: Math.max(45, this.state.height) }
+						]}
+					>
+						<TextInput
+							placeholder="Escribe un mensaje"
+							multiline={true}
+							onChangeText={(text) => {
+								this.setState({ text });
+							}}
+							onContentSizeChange={(event) => {
+								this.setState({ height: event.nativeEvent.contentSize.height });
+							}}
+							style={[estilos.inputChat, { height: Math.max(45, this.state.height) }]}
+							value={this.state.text}
+						/>
+
 						<TouchableOpacity
 							style={{
 								paddingHorizontal: 10,
 								justifyContent: 'center',
 								alignItems: 'center',
-								borderRightWidth: 1
+								borderLeftWidth: 1
 							}}
 						>
 							<Icon name="add" size={30} color="#1F3F3E" />
 						</TouchableOpacity>
-
-						<View style={{ flex: 8, paddingHorizontal: 10 }}>
-							<TextInput
-								placeholder="Escribe un mensaje"
-								style={{
-									flex: 1,
-									fontSize: 17
-								}}
-							/>
-						</View>
 
 						<TouchableOpacity style={estilos.icon}>
 							<Icon name="send" size={30} color="white" />
@@ -66,6 +81,25 @@ export default class Grupo extends React.Component<Iprops, null> {
 	}
 }
 
+/*
+
+	  
+<TextInput
+								key="input"
+								placeholder="Escribe un mensaje"
+								style={[estilos.inputChat, { height: this.state.alto }]}
+								multiline={true}
+								editable={true}
+								scrollEnabled={true}
+								maxFontSizeMultiplier={10}
+								onContentSizeChange={(e) => {
+									this.setState({ alto: this.state.alto + 3 });
+									console.log(e);
+								}}
+							/>
+
+*/
+
 const estilos = StyleSheet.create({
 	container: {
 		flex: 1
@@ -75,8 +109,8 @@ const estilos = StyleSheet.create({
 		marginVertical: 10
 	},
 	inputContainer: {
-		height: 45,
 		borderTopWidth: 1,
+		maxHeight: 141,
 		borderColor: '#000000',
 		backgroundColor: 'white',
 		flexDirection: 'row'
@@ -98,6 +132,13 @@ const estilos = StyleSheet.create({
 		flex: 1,
 		resizeMode: 'cover',
 		justifyContent: 'center'
+	},
+	inputChat: {
+		flex: 8,
+		maxHeight: 140,
+		fontSize: 17,
+		textAlignVertical: 'center',
+		paddingHorizontal: 10
 	}
 });
 
