@@ -47,58 +47,54 @@ export default class Grupo extends React.Component<Iprops, Istate> {
 							{ height: Math.max(45, this.state.height) }
 						]}
 					>
-						<TextInput
-							placeholder="Escribe un mensaje"
-							multiline={true}
-							onChangeText={(text) => {
-								this.setState({ text });
-							}}
-							onContentSizeChange={(event) => {
-								this.setState({ height: event.nativeEvent.contentSize.height });
-							}}
-							style={[estilos.inputChat, { height: Math.max(45, this.state.height) }]}
-							value={this.state.text}
-						/>
-
-						<TouchableOpacity
+						<View style={estilos.opciones}>
+							<View
+								style={{
+									height: '100%',
+									flexDirection: 'column-reverse'
+								}}
+							>
+								<TouchableOpacity style={{ marginVertical: 5 }}>
+									<Icon name="add" size={30} color="gray" />
+								</TouchableOpacity>
+							</View>
+							<TextInput
+								placeholder="Escribe un mensaje"
+								multiline={true}
+								onChangeText={(text) => {
+									this.setState({ text });
+								}}
+								onContentSizeChange={(event) => {
+									this.setState({ height: event.nativeEvent.contentSize.height });
+								}}
+								style={[
+									estilos.inputChat,
+									{ height: Math.max(45, this.state.height) }
+								]}
+								value={this.state.text}
+							/>
+						</View>
+						<View
 							style={{
-								paddingHorizontal: 10,
-								justifyContent: 'center',
-								alignItems: 'center',
-								borderLeftWidth: 1
+								flexDirection: 'column-reverse'
 							}}
 						>
-							<Icon name="add" size={30} color="#1F3F3E" />
-						</TouchableOpacity>
-
-						<TouchableOpacity style={estilos.icon}>
-							<Icon name="send" size={30} color="white" />
-						</TouchableOpacity>
+							<TouchableOpacity
+								style={{
+									backgroundColor: '#1F3F3E',
+									padding: 5,
+									borderRadius: 20
+								}}
+							>
+								<Icon name="send" size={30} color="white" />
+							</TouchableOpacity>
+						</View>
 					</View>
 				</View>
 			</View>
 		);
 	}
 }
-
-/*
-
-	  
-<TextInput
-								key="input"
-								placeholder="Escribe un mensaje"
-								style={[estilos.inputChat, { height: this.state.alto }]}
-								multiline={true}
-								editable={true}
-								scrollEnabled={true}
-								maxFontSizeMultiplier={10}
-								onContentSizeChange={(e) => {
-									this.setState({ alto: this.state.alto + 3 });
-									console.log(e);
-								}}
-							/>
-
-*/
 
 const estilos = StyleSheet.create({
 	container: {
@@ -109,24 +105,18 @@ const estilos = StyleSheet.create({
 		marginVertical: 10
 	},
 	inputContainer: {
-		borderTopWidth: 1,
 		maxHeight: 141,
 		borderColor: '#000000',
-		backgroundColor: 'white',
-		flexDirection: 'row'
+		backgroundColor: '#e5ddd5',
+		flexDirection: 'row',
+		height: 50,
+		paddingBottom: 5,
+		paddingHorizontal: 5
 	},
 	fondo: {
 		flex: 1,
 		resizeMode: 'cover',
 		justifyContent: 'center'
-	},
-	icon: {
-		flex: 2,
-		justifyContent: 'center',
-		alignItems: 'center',
-		borderColor: '#000000',
-		backgroundColor: '#1F3F3E',
-		paddingLeft: 5
 	},
 	image: {
 		flex: 1,
@@ -138,7 +128,19 @@ const estilos = StyleSheet.create({
 		maxHeight: 140,
 		fontSize: 17,
 		textAlignVertical: 'center',
-		paddingHorizontal: 10
+		paddingRight: 10,
+		paddingLeft: 5,
+		paddingVertical: 2
+	},
+	opciones: {
+		flex: 10,
+		height: '100%',
+		backgroundColor: 'white',
+		marginRight: 10,
+		borderRadius: 20,
+		flexDirection: 'row',
+		justifyContent: 'center',
+		alignItems: 'center'
 	}
 });
 
