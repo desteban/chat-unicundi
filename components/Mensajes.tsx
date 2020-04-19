@@ -25,7 +25,7 @@ export default function Mensajes(props: Imensaje) {
 				style={
 					props.persona
 						? [estilos.mensaje, { backgroundColor: 'white' }]
-						: [estilos.mensaje, { alignItems: 'flex-end', backgroundColor: '#dbf6c5' }]
+						: [estilos.mensaje, { alignItems: 'flex-end', backgroundColor: '#fec134' }]
 				}
 			>
 				<Text style={estilos.nombre}> {props.persona ? props.persona : 'Tu'} </Text>
