@@ -8,6 +8,11 @@ interface Iprops {
 	navigation;
 }
 
+export interface Igrupo {
+	nombre: string;
+	codigo: string;
+}
+
 export default function Grupo(props: Iprops) {
 	return (
 		<TouchableOpacity
