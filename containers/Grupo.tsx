@@ -1,8 +1,17 @@
 import * as React from 'react';
-import { View, StyleSheet, TextInput, ImageBackground, TouchableOpacity } from 'react-native';
+import {
+	View,
+	StyleSheet,
+	TextInput,
+	ImageBackground,
+	TouchableOpacity,
+	FlatList,
+	TouchableNativeFeedback
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Header from '../components/HeaderLogin';
-import Mensaje from '../components/Mensajes';
+import Mensaje, { Imensaje } from '../components/Mensajes';
+import * as DocumentPicker from 'expo-document-picker';
 
 const colorFondo = '#e5ddd5';
 //e5ddd5 378C89
@@ -45,6 +54,7 @@ export default class Grupo extends React.Component<Iprops, Istate> {
 								fecha="Fecha"
 							/>
 						</View>
+
 						<View
 							style={[
 								estilos.inputContainer,
@@ -70,20 +80,36 @@ export default class Grupo extends React.Component<Iprops, Istate> {
 									value={this.state.text}
 								/>
 							</View>
+
 							<View style={{ flexDirection: 'column-reverse' }}>
-								<View
-									style={{
-										flexDirection: 'row',
-										borderRadius: 20,
-										backgroundColor: '#458C8A',
-										marginLeft: 5
-									}}
-								>
+								<View style={estilos.iconBox}>
+									{/**
+									 * Icon add
+									 */}
+
 									<View style={estilos.iconContainer}>
-										<TouchableOpacity style={estilos.icon}>
+										<TouchableOpacity
+											style={estilos.icon}
+											onPress={() => {
+												DocumentPicker.getDocumentAsync({
+													type: '*/*',
+													copyToCacheDirectory: false
+												})
+													.then((document) => {
+														alert(`uri: ${document.uri}
+													nombre: ${document.name}`);
+													})
+													.catch(() => alert('Algo salio mal'));
+											}}
+										>
 											<Icon name="add" size={30} color="white" />
 										</TouchableOpacity>
 									</View>
+
+									{/**
+									 * Icons send
+									 */}
+
 									<View style={estilos.iconContainer}>
 										<TouchableOpacity style={[estilos.icon]}>
 											<Icon name="send" size={30} color="white" />
@@ -146,6 +172,12 @@ const estilos = StyleSheet.create({
 	iconContainer: {
 		flexDirection: 'column-reverse',
 		height: '100%'
+	},
+	iconBox: {
+		flexDirection: 'row',
+		borderRadius: 20,
+		backgroundColor: '#458C8A',
+		marginLeft: 5
 	},
 	icon: {
 		padding: 5,

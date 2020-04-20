@@ -1,18 +1,11 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 
-interface Imensaje {
+export interface Imensaje {
 	persona?: string;
 	mensaje: string;
 	fecha?;
 }
-
-/*
-{
-				width: '100%',
-				flexDirection: 'row-reverse'
-			}
-*/
 
 export default function Mensajes(props: Imensaje) {
 	return (
