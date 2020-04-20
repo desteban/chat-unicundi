@@ -46,7 +46,8 @@ const estilos = StyleSheet.create({
 		fontWeight: '500',
 		textAlign: 'center',
 		textAlignVertical: 'center',
-		width: '100%'
+		width: '100%',
+		paddingHorizontal: 30
 	},
 	header: {
 		backgroundColor: '#1F3F3E',
