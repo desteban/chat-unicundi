@@ -10,6 +10,7 @@ import {
 import Header from '../components/HeaderLogin';
 import Mensaje, { Imensaje } from '../components/Mensajes';
 import InputGrupo from '../components/InputGrupo';
+import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 
 const colorFondo = '#e5ddd5';
 //e5ddd5 378C89
@@ -45,36 +46,40 @@ export default class Grupo extends React.Component<Iprops, Istate> {
 			<KeyboardAvoidingView
 				style={estilos.container}
 				behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+				keyboardVerticalOffset={25}
 			>
-				<View style={{ flex: 1 }}>
-					<Header
-						back={true}
-						titulo={this.props.route.params.grupo}
-						navigation={this.props.navigation.goBack}
-					/>
-					<View style={[estilos.container, { backgroundColor: colorFondo }]}>
-						<ImageBackground
-							source={require('../assets/escudo_blanco.png')}
-							style={estilos.image}
-						>
-							<View style={[estilos.container, estilos.contenido]}>
-								<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
-								<Mensaje mensaje="Hola" fecha="Fecha" />
-								<Mensaje
-									persona="El primo"
-									mensaje="Dejen Dormir jajajajaj"
-									fecha="Fecha"
+				<ActionSheetProvider>
+					<View style={{ flex: 1 }}>
+						<Header
+							back={true}
+							titulo={this.props.route.params.grupo}
+							navigation={this.props.navigation.goBack}
+						/>
+						<View style={[estilos.container, { backgroundColor: colorFondo }]}>
+							<ImageBackground
+								source={require('../assets/escudo_blanco.png')}
+								style={estilos.image}
+							>
+								<View style={[estilos.container, estilos.contenido]}>
+									<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
+									<Mensaje mensaje="Hola" fecha="Fecha" />
+									<Mensaje
+										persona="El primo"
+										mensaje="Dejen Dormir jajajajaj"
+										fecha="Fecha"
+									/>
+								</View>
+
+								<InputGrupo
+									value={this.state.text}
+									onChangeText={this.onChangeText}
+									onContentSizeChange={this.onContentSizeChange}
+									height={this.state.height}
 								/>
-							</View>
-							<InputGrupo
-								value={this.state.text}
-								onChangeText={this.onChangeText}
-								onContentSizeChange={this.onContentSizeChange}
-								height={this.state.height}
-							/>
-						</ImageBackground>
+							</ImageBackground>
+						</View>
 					</View>
-				</View>
+				</ActionSheetProvider>
 			</KeyboardAvoidingView>
 		);
 	}

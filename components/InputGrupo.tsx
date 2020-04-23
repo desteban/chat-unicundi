@@ -1,7 +1,15 @@
 import * as React from 'react';
-import { View, TouchableOpacity, StyleSheet, TextInput, Text } from 'react-native';
-import * as DocumentPicker from 'expo-document-picker';
+import {
+	View,
+	TouchableOpacity,
+	StyleSheet,
+	TextInput,
+	KeyboardAvoidingView,
+	Platform
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+
+import BotonesInput from './BotonesInput';
 
 interface Iprops {
 	onChangeText?;
@@ -10,12 +18,17 @@ interface Iprops {
 	send?;
 	height;
 }
-this;
 
 export default function InputGrupo(props: Iprops) {
+	let margin: number = 0;
 	return (
-		<View style={[estilos.inputContainer, { height: Math.max(45, props.height) }]}>
-			<View style={estilos.opciones}>
+		<View
+			style={[
+				estilos.inputContainer,
+				{ height: Math.max(45, props.height), marginBottom: Math.max(0, margin) }
+			]}
+		>
+			<View style={[estilos.opciones, { flex: 1 }]}>
 				<TextInput
 					placeholder="Escribe un mensaje"
 					multiline={true}
@@ -23,32 +36,17 @@ export default function InputGrupo(props: Iprops) {
 					onContentSizeChange={(event) => props.onContentSizeChange(event)}
 					style={[estilos.inputChat, { height: Math.max(45, props.height) }]}
 					value={props.value}
+					onFocus={() => {
+						//margin = 25;
+						console.log(margin);
+					}}
 				/>
 			</View>
 
 			<View style={{ flexDirection: 'column-reverse' }}>
 				<View style={estilos.iconBox}>
-					{/**
-					 * Icon add
-					 */}
-
 					<View style={estilos.iconContainer}>
-						<TouchableOpacity
-							style={estilos.icon}
-							onPress={() => {
-								DocumentPicker.getDocumentAsync({
-									type: 'application/*',
-									copyToCacheDirectory: false
-								})
-									.then((document) => {
-										alert(`uri: ${document.uri}
-                                nombre: ${document.name}`);
-									})
-									.catch(() => alert('Algo salio mal'));
-							}}
-						>
-							<Icon name="add" size={30} color="white" />
-						</TouchableOpacity>
+						<BotonesInput />
 					</View>
 
 					{/**
