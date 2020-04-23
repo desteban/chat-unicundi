@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { View, StyleSheet, ImageBackground, FlatList } from 'react-native';
+import {
+	View,
+	StyleSheet,
+	ImageBackground,
+	FlatList,
+	KeyboardAvoidingView,
+	Platform
+} from 'react-native';
 import Header from '../components/HeaderLogin';
 import Mensaje, { Imensaje } from '../components/Mensajes';
 import InputGrupo from '../components/InputGrupo';
@@ -35,35 +42,40 @@ export default class Grupo extends React.Component<Iprops, Istate> {
 
 	render() {
 		return (
-			<View style={{ flex: 1 }}>
-				<Header
-					back={true}
-					titulo={this.props.route.params.grupo}
-					navigation={this.props.navigation.goBack}
-				/>
-				<View style={[estilos.container, { backgroundColor: colorFondo }]}>
-					<ImageBackground
-						source={require('../assets/escudo_blanco.png')}
-						style={estilos.image}
-					>
-						<View style={[estilos.container, estilos.contenido]}>
-							<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
-							<Mensaje mensaje="Hola" fecha="Fecha" />
-							<Mensaje
-								persona="El primo"
-								mensaje="Dejen Dormir jajajajaj"
-								fecha="Fecha"
+			<KeyboardAvoidingView
+				style={estilos.container}
+				behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+			>
+				<View style={{ flex: 1 }}>
+					<Header
+						back={true}
+						titulo={this.props.route.params.grupo}
+						navigation={this.props.navigation.goBack}
+					/>
+					<View style={[estilos.container, { backgroundColor: colorFondo }]}>
+						<ImageBackground
+							source={require('../assets/escudo_blanco.png')}
+							style={estilos.image}
+						>
+							<View style={[estilos.container, estilos.contenido]}>
+								<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
+								<Mensaje mensaje="Hola" fecha="Fecha" />
+								<Mensaje
+									persona="El primo"
+									mensaje="Dejen Dormir jajajajaj"
+									fecha="Fecha"
+								/>
+							</View>
+							<InputGrupo
+								value={this.state.text}
+								onChangeText={this.onChangeText}
+								onContentSizeChange={this.onContentSizeChange}
+								height={this.state.height}
 							/>
-						</View>
-						<InputGrupo
-							value={this.state.text}
-							onChangeText={this.onChangeText}
-							onContentSizeChange={this.onContentSizeChange}
-							height={this.state.height}
-						/>
-					</ImageBackground>
+						</ImageBackground>
+					</View>
 				</View>
-			</View>
+			</KeyboardAvoidingView>
 		);
 	}
 }

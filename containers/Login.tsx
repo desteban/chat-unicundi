@@ -1,5 +1,13 @@
 import React from 'react';
-import { View, StyleSheet, TextInput, Image, AsyncStorage, BackHandler } from 'react-native';
+import {
+	View,
+	StyleSheet,
+	TextInput,
+	Image,
+	AsyncStorage,
+	KeyboardAvoidingView,
+	Platform
+} from 'react-native';
 import Boton from '../components/Boton';
 import Header from '../components/HeaderLogin';
 
@@ -30,54 +38,63 @@ export default class Login extends React.Component<Iprops, IState> {
 
 	render() {
 		return (
-			<View style={{ flex: 1 }}>
-				<Header />
-				<View style={estilos.container}>
-					<View
-						style={{
-							marginVertical: 15,
-							alignItems: 'center',
-							justifyContent: 'center'
-						}}
-					>
-						<Image
-							style={{ height: 150 }}
-							resizeMode="contain"
-							source={require('../assets/escudo.png')}
-						/>
-					</View>
+			<KeyboardAvoidingView
+				style={{ flex: 1 }}
+				behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+			>
+				<View style={{ flex: 1 }}>
+					<Header />
+					<View style={estilos.container}>
+						<View
+							style={{
+								marginVertical: 15,
+								alignItems: 'center',
+								justifyContent: 'center'
+							}}
+						>
+							<Image
+								style={{ height: 150 }}
+								resizeMode="contain"
+								source={require('../assets/escudo.png')}
+							/>
+						</View>
 
-					<TextInput placeholder="Codigo" style={estilos.inputs} keyboardType="numeric" />
-					<TextInput
-						placeholder="Contraseña"
-						textContentType="password"
-						style={estilos.inputs}
-						secureTextEntry={true}
-					/>
+						<TextInput
+							placeholder="Codigo"
+							style={estilos.inputs}
+							keyboardType="numeric"
+						/>
+						<TextInput
+							placeholder="Contraseña"
+							textContentType="password"
+							style={estilos.inputs}
+							secureTextEntry={true}
+						/>
 
-					<View
-						style={{
-							flexDirection: 'row',
-							justifyContent: 'space-around',
-							marginVertical: 15
-						}}
-					>
-						<Boton
-							Text="Ingresar"
-							backgroundColor="#1F3F3E"
-							Color="white"
-							onPress={() => this.props.navigation.push('principal')}
-						/>
-						<Boton
-							Text="¿Olvidaste tu contraseña?"
-							borderWidth={1}
-							borderColor="gray"
-							Color="gray"
-							onPress={() => Usuario()}
-						/>
+						<View
+							style={{
+								flexDirection: 'row',
+								justifyContent: 'space-around',
+								marginVertical: 15
+							}}
+						>
+							<Boton
+								Text="Ingresar"
+								backgroundColor="#1F3F3E"
+								Color="white"
+								onPress={() => this.props.navigation.push('principal')}
+							/>
+							<Boton
+								Text="¿Olvidaste tu contraseña?"
+								borderWidth={1}
+								borderColor="gray"
+								Color="gray"
+								onPress={() => Usuario()}
+							/>
+						</View>
 					</View>
 				</View>
-			</View>
+			</KeyboardAvoidingView>
 		);
 	}
 }

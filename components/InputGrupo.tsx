@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, TextInput, Text } from 'react-native';
 import * as DocumentPicker from 'expo-document-picker';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
@@ -37,7 +37,7 @@ export default function InputGrupo(props: Iprops) {
 							style={estilos.icon}
 							onPress={() => {
 								DocumentPicker.getDocumentAsync({
-									type: '*/*',
+									type: 'application/*',
 									copyToCacheDirectory: false
 								})
 									.then((document) => {
