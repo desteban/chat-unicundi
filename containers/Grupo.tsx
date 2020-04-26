@@ -43,40 +43,38 @@ export default class Grupo extends React.Component<Iprops, Istate> {
 
 	render() {
 		return (
-			<KeyboardAvoidingView
-				style={estilos.container}
-				behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
-				keyboardVerticalOffset={25}
-			>
-				<ActionSheetProvider>
-					<View style={{ flex: 1 }}>
-						<Header
-							back={true}
-							titulo={this.props.route.params.grupo}
-							navigation={this.props.navigation.goBack}
-						/>
-						<View style={[estilos.container, { backgroundColor: colorFondo }]}>
-							<ImageBackground
-								source={require('../assets/escudo_blanco.png')}
-								style={estilos.image}
-							>
-								<View style={[estilos.container, estilos.contenido]}>
-									<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
-									<Mensaje mensaje="Hola" fecha="Fecha" />
-									<Mensaje persona="Persona" mensaje="Hola" fecha="Fecha" />
-								</View>
+			<ActionSheetProvider>
+				<KeyboardAvoidingView
+					style={estilos.container}
+					behavior={Platform.OS == 'ios' ? 'padding' : 'height'}
+					keyboardVerticalOffset={25}
+				>
+					<Header
+						back={true}
+						titulo={this.props.route.params.grupo}
+						navigation={this.props.navigation.goBack}
+					/>
+					<View style={[estilos.container, { backgroundColor: colorFondo }]}>
+						<ImageBackground
+							source={require('../assets/escudo_blanco.png')}
+							style={estilos.image}
+						>
+							<View style={[estilos.container, estilos.contenido]}>
+								<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
+								<Mensaje mensaje="Hola" fecha="Fecha" />
+								<Mensaje persona="Persona" mensaje="Hola" fecha="Fecha" />
+							</View>
 
-								<InputGrupo
-									value={this.state.text}
-									onChangeText={this.onChangeText}
-									onContentSizeChange={this.onContentSizeChange}
-									height={this.state.height}
-								/>
-							</ImageBackground>
-						</View>
+							<InputGrupo
+								value={this.state.text}
+								onChangeText={this.onChangeText}
+								onContentSizeChange={this.onContentSizeChange}
+								height={this.state.height}
+							/>
+						</ImageBackground>
 					</View>
-				</ActionSheetProvider>
-			</KeyboardAvoidingView>
+				</KeyboardAvoidingView>
+			</ActionSheetProvider>
 		);
 	}
 }

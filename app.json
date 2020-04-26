@@ -26,7 +26,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "",
+    "description": "Un chat para la Universidad de Cunidinamarca",
     "githubUrl": "https://github.com/desteban/chat-unicundi"
   }
 }
