@@ -63,11 +63,7 @@ export default class Grupo extends React.Component<Iprops, Istate> {
 								<View style={[estilos.container, estilos.contenido]}>
 									<Mensaje persona="Jose" mensaje="Hola, que tal" fecha="Fecha" />
 									<Mensaje mensaje="Hola" fecha="Fecha" />
-									<Mensaje
-										persona="El primo"
-										mensaje="Dejen Dormir jajajajaj"
-										fecha="Fecha"
-									/>
+									<Mensaje persona="Persona" mensaje="Hola" fecha="Fecha" />
 								</View>
 
 								<InputGrupo

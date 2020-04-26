@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { ActionSheetOptions } from '@expo/react-native-action-sheet';
-import { Text, View, TextStyle, ViewStyle, findNodeHandle, Button } from 'react-native';
+import { TextStyle, ViewStyle, findNodeHandle } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 interface Iprops {

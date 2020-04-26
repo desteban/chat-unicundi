@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-	View,
-	TouchableOpacity,
-	StyleSheet,
-	TextInput,
-	KeyboardAvoidingView,
-	Platform
-} from 'react-native';
+import { View, TouchableOpacity, StyleSheet, TextInput } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import BotonesInput from './BotonesInput';

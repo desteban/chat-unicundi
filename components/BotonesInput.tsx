@@ -4,6 +4,10 @@ import { connectActionSheet, ActionSheetProps } from '@expo/react-native-action-
 import ShowActionSheetButton from './ActionSheetButton';
 import * as DocumentPicker from 'expo-document-picker';
 
+import { Multimedia } from '../Storage/Multimedia';
+
+const multimedia = new Multimedia();
+
 type Props = ActionSheetProps;
 
 interface State {
@@ -27,44 +31,16 @@ class App extends React.Component<Props, State> {
 				})
 				.catch(() => alert('Algo salio mal'));
 		} else if (selectedIndex === 1) {
-			DocumentPicker.getDocumentAsync({
-				type: 'image/*',
-				copyToCacheDirectory: false
-			})
-				.then((document) => {
-					alert(`uri: ${document.uri}
-            nombre: ${document.name}`);
-				})
-				.catch(() => alert('Algo salio mal'));
+			//pedir permisos
+			//multimedia.ValidarPermisos();
+			multimedia.Fotos();
 		} else if (selectedIndex === 2) {
-			DocumentPicker.getDocumentAsync({
-				type: 'video/*',
-				copyToCacheDirectory: false
-			})
-				.then((document) => {
-					alert(`uri: ${document.uri}
-            nombre: ${document.name}`);
-				})
-				.catch(() => alert('Algo salio mal'));
+			multimedia.Videos();
 		}
 		this.setState({
 			selectedIndex
 		});
 	};
-
-	/*
-    () => {
-								DocumentPicker.getDocumentAsync({
-									type: 'application/*',
-									copyToCacheDirectory: false
-								})
-									.then((document) => {
-										alert(`uri: ${document.uri}
-                                nombre: ${document.name}`);
-									})
-									.catch(() => alert('Algo salio mal'));
-							}
-    */
 
 	_renderButtons() {
 		const { showActionSheetWithOptions } = this.props;
