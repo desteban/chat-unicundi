@@ -27,9 +27,9 @@ export default class Screen extends React.Component<Iprops, null> {
 							<Text style={estilos.codigoUsuario}>Codigo</Text>
 						</View>
 
-						<View>
+						<TouchableOpacity>
 							<Icon name="face" size={35} color="white" />
-						</View>
+						</TouchableOpacity>
 					</SafeAreaView>
 				</View>
 			</View>

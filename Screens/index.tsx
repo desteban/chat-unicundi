@@ -3,7 +3,7 @@ import { createMaterialTopTabNavigator } from '@react-navigation/material-top-ta
 import { MyTabBar } from '../components/TabBar';
 
 import Home from '../containers/Home';
-import Login from '../containers/Login';
+import Settings from '../containers/Settings';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -14,7 +14,7 @@ function index({ navigation }) {
 	return (
 		<Tab.Navigator swipeEnabled={true} tabBar={(props) => <MyTabBar {...props} />}>
 			<Tab.Screen name="Grupos" component={Home} />
-			<Tab.Screen name="Settings" component={Login} />
+			<Tab.Screen name="Settings" component={Settings} />
 		</Tab.Navigator>
 	);
 }

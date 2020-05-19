@@ -12,7 +12,7 @@ function icono(route, focused) {
 	if (route.name === 'Grupos') {
 		iconName = focused ? 'group' : 'home';
 	} else if (route.name === 'Settings') {
-		iconName = focused ? 'https' : 'group';
+		iconName = focused ? 'settings' : 'settings';
 	}
 
 	return <Icon name={iconName} size={25} color={focused ? 'white' : 'gray'} />;

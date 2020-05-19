@@ -17,7 +17,7 @@ export default class Home extends React.Component<Iprops, Istate> {
 		this.state = {
 			gurpos: [
 				{ codigo: '123', nombre: 'Investigacion I' },
-				{ codigo: '120', nombre: 'Escuaciones Diferenciales' },
+				{ codigo: '120', nombre: 'Ecuaciones Diferenciales' },
 				{ codigo: '126', nombre: 'Electiva Profecional I' }
 			]
 		};
